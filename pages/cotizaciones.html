@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/cotizaciones.css">
+    <title>Cotizaciones EventOptimizer</title>
+</head>
+<body>
+    <div class="main">
+        <div class="factura" id="factura">
+            <button type="button" id="cerrar">
+                <span></span><span></span>
+            </button>
+            <h1>Detalles de cotizaciones</h1>
+            <div class="tabla" id="tabla">
+                <div class="thead">
+                    <div class="row">
+                        <div class="cell">Nombre</div>
+                        <div class="cell">Precio</div>
+                    </div>
+                </div>
+                <div class="tbody" id="body">
+                    
+                </div>
+                <div class="tfooter" id="tfooter">
+                    
+                </div>
+            </div>
+        </div>
+        <header class="header" id="header">
+            <div class="logo">
+                <h1>
+                    <span>EventOptimizer</span>
+                </h1>
+            </div>
+            <nav class="nav" id="nav">
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li id="open"><a href="#">Abrir factura</a></li>
+                    <li id="salir"><a href="#">Salir</a></li>
+                    <li class="login" id="login">
+                        <a href="../pages/login.html">Ingresa</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="hamburguesa" id="hamburguesa">
+                <button type="button">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </header>
+        <div class="servicios">
+            <form action="" class="formulario" id="formulario">
+                <div class="row">
+                    <label for="tipo_evento">Tipo de evento</label>
+                    <select name="tipo_evento" id="tipo_evento">
+                        <option value="Fiesta comun">Fiesta comun</option>
+                        <option value="Bodas">Bodas</option>
+                        <option value="Evento familiar">Evento familiar</option>
+                        <option value="Grados">Grados</option>
+                        <option value="Otros">Otros</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <label for="fInicio">Fecha de entrada</label>
+                    <input type="date" name="fInicio" id="fInicio" required>
+                </div>
+                <div class="row">
+                    <label for="fFin">Fecha de salida</label>
+                    <input type="date" name="fFin" id="fFin"required>
+                </div>
+                <div class="row">
+                    <label for="numeroMesas">Numero de mesas</label>
+                    <input type="number" name="numeroMesas" id="numeroMesas"required>
+                </div>
+                <div class="row">
+                    <label for="numeroMeseros">Número de meseros</label>
+                    <input type="number" name="numeroMeseros" id="numeroMeseros"required>
+                </div>
+                <div class="row">
+                    <label for="tLocal">Tamaño del local</label>
+                    <select name="tLocal" id="tLocal"required>
+                        <option value="Pequeño">Pequeño</option>
+                        <option value="Mediano">Mediano</option>
+                        <option value="Grande">Grande</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <label for="cComida">Combo de comida</label>
+                    <select name="cComida" id="cComida"required>
+                        <option value="Pequeño">Pequeño</option>
+                        <option value="Mediano">Mediano</option>
+                        <option value="Grande">Grande</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <label for="tDecoracion">Tipo de decoracion</label>
+                    <select name="tDecoracion" id="tDecoracion"required>
+                        <option value="Pequeño">Pequeño</option>
+                        <option value="Mediano">Mediano</option>
+                        <option value="Grande">Grande</option>
+                    </select>
+                </div>
+                <div class="row row-submit">
+                    <input type="submit" value="Calcular" class="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../js/controlador/EventOptimizer/negocio.js"></script>
+    <script src="../js/cotizaciones.js"></script>
+</body>
+</html>
