@@ -1,0 +1,389 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+:root{
+    --tea-green: #ccd5aeff;
+    --beige: #e9edc9ff;
+    --cornsilk: #fefae0ff;
+    --papaya-whip: #faedcdff;
+    --buff: #d4a373ff;
+}
+html{
+    scroll-behavior: smooth;
+    stroke-width: thin;
+}
+.main{
+    max-width: 1440px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: #000000b6;
+}
+
+/* Estilos de la cabecera */
+.header{
+    width: 99%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    background: var(--buff);
+    /* position: sticky;
+    top: 0; */
+    z-index: 2;
+    transition: all .3s ease-out;
+}
+
+.logo{
+    width: 250px;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+.logo h1{
+    font-size: 25px;
+    color: var(--cornsilk);
+    font-weight: bold;
+}
+.logo span{
+    display: block;
+    width: 15ch;
+    overflow: hidden;
+    border-right: 4px solid;
+    border-color: var(--beige);
+    animation: splink 2s steps(15)  alternate-reverse, opacity 1s linear infinite;
+}
+
+.nav{
+    width: calc(100% - 250px);
+    height: 100%;
+    transition: all .2s ease-in;
+    background: inherit;
+}
+
+nav.active{
+    transform: translateX(0%);
+}
+.nav ul{
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    position: relative;
+}
+.nav li{
+    /* border: 1px solid; */
+    min-width: 180px;
+    height: 30px;
+    position: relative;
+}
+.nav a{
+    display: grid;
+    place-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: var(--cornsilk);
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: all .15s ease-in;
+    position: relative;
+}
+
+.nav li a::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0%;
+    height: 100%;
+    transition: all .25s ease-in;
+
+}
+
+.nav li a:hover::before{
+    width: 30%;
+    border-top: 2px solid ;
+    border-bottom: 2px solid;
+    border-color: var(--papaya-whip);
+}
+
+
+.hamburguesa{
+    position: absolute;
+    right: 1em;
+    width: auto;
+    height: auto;
+    display: none;
+}
+.hamburguesa button{
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.hamburguesa span{
+    width: 25px;
+    height: 3px;
+    background: var(--cornsilk);
+    margin: .2em;
+    transition: all .2s ease-in;
+}
+
+.hamburguesa.active span:nth-child(1){
+    transform: rotate(45deg) translate(3px, 3px);
+
+}
+.hamburguesa.active span:nth-child(2){
+    display: none;
+}
+.hamburguesa.active span:nth-child(3){
+    transform: rotate(-45deg) translate(3px, -3px);
+}
+
+/* Estilos de las cotizacion de servicio */
+.servicios{
+    width: 99%;
+    height: calc(100vh - 100px);
+    background: var(--beige);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,minmax(
+            min(250px,100%),300px
+        )
+    );
+    place-content: center;
+    padding: 2em;
+    gap: 2em;
+}
+.formulario .row{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.row label{
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--buff);
+    margin-bottom: 3px;
+}
+.row input, .row select{
+    width: 100%;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--buff);
+    background: var(--cornsilk);
+    border: 1px solid #00000065;
+    outline: none;
+    text-align: center;
+    border-radius: .2em;
+}
+
+.row-submit{
+    justify-content: end !important;
+
+}
+.row .submit{
+   cursor: pointer;
+   border-color: var(--cornsilk);
+   background: var(--buff);
+   color: var(--cornsilk);
+   transition: all .3s ease-out;
+}
+.row .submit:hover{opacity: .87;}
+
+/* Estilo de la factura */
+.factura{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    height: 600px;
+    background: var(--cornsilk);
+    z-index: 4;
+    border-radius: .2em;
+    border: 1px solid var(--buff);
+    display: none;
+    flex-direction: column;
+    animation: trasnlate .2s linear;
+    padding: .3em;
+}
+.factura.open{display: flex;}
+.factura button{
+    position: absolute;
+    top: .2em;
+    right: .2em;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.factura span{
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    display: block;
+}
+.factura span:nth-child(1){
+    transform: translate(-1px,-1px) rotate(45deg);
+}
+.factura span:nth-child(2){
+    transform: translate(-2px,-2px) rotate(-45deg);
+}
+.factura h1{
+    font-size: 20px;
+    height: 50px;
+    text-align: center;
+    display: grid;
+    place-content: center;
+    margin-top: 1em;
+    width: 100%;
+    color: var(--buff);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.factura .tabla{
+    width: 100%;
+    height: calc(100% - 60px);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #00000065;
+    border-radius: inherit;
+
+}
+.tabla .row{
+    display: flex;
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid;
+    font-size: 16px;
+    border-radius: inherit;
+
+    
+}
+.tabla .thead, .tabla .tfooter{
+    height: 30px;
+    width: 100%;
+    background: var(--buff);
+    color: var(--beige);
+    font-weight: bold;
+
+}
+.tabla .thead{position: sticky; top: 0;}
+.tabla .tfooter{
+    position: absolute;
+    bottom: 0;
+}
+.tabla .tbody{
+    height: calc(100% - 60px);
+    overflow: auto;
+}
+
+.tabla .thead .row{
+    font-size: 18px;
+    font-weight: bold;
+}
+.tabla .cell{
+    width: calc(100% / 2);
+    display: grid;
+    place-content: center;
+    font-size: 14px;
+
+}
+.tbody .cell:nth-child(1){
+    justify-content: start;
+    padding-left: .4em;
+}
+
+@keyframes trasnlate {
+    0%{transform: translateY(20px);}
+}
+@keyframes scale {
+    0%{transform: scale(1.5);}
+    25%{transform: scale(1.8);}
+    50%{transform: scale(2);}
+    75%{transform: scale(1.8);}
+    100%{transform: scale(1.5);}
+}
+@keyframes opacity {
+    50%{border-color: transparent;}
+}
+@keyframes splink {
+    to{
+        width: 0ch;
+    }
+    from{
+        width: 15ch;
+    }
+}
+
+@media (max-width: 1024px) {
+    .header{
+        width: 100% !important;
+    }
+    .logo{
+        width: 100%;
+        height: 100%;
+    }
+    .nav{
+        position: absolute;
+        top: 100px;
+        transform: translateX(-100%);
+        width: 100%;
+        height:calc(100vh - 100px);
+        border: 1px solid var(--beige);
+        z-index: 1;
+    }
+    .nav ul{
+        flex-direction: column;
+        overflow: hidden;
+        justify-content: start;
+    }
+    .nav li{
+        position: relative !important;
+        width: 100%;
+        height: 40px;
+        border-radius: 0px !important;
+        border: none !important;
+        right: 0em !important;
+        margin-top: 1em;
+    }
+    .nav li a::before{display: none !important;}
+    .hamburguesa{
+        display: block;
+        z-index: 1;
+    }
+    .servicios{
+        height: auto;
+    }
+
+}
+
+@media (max-width:900px) {
+    .factura{width: 97%;}
+}
+
